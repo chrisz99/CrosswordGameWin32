@@ -1,6 +1,11 @@
 # Crossword Game (C++ / Win32 API)
 
+![Crossword Gameplay](images/Game.png)
+
 A custom crossword game engine built from scratch using the Win32 API. No external game engines or UI libraries—just raw C++, Windows messages, and GDI drawing.
+
+## New Game Dialog
+![New Game Interface](images/NewGameDialog.png)
 
 ## Key Features
 
@@ -15,7 +20,7 @@ A custom crossword game engine built from scratch using the Win32 API. No extern
 One of the most interesting parts of this project is how I handled the grid. Standard Win32 textboxes don't support things like "Arrow Key Jumping" or "Tiny Clue Numbers." 
 
 I used a `SetWindowLongPtr` trampoline to inject a custom brain (`TileSubclassProc`) into every single textbox. This lets me:
-- **Assassinate Arrow Keys**: Stop the default cursor movement and instead teleport the user to the next logical tile.
+- **Arrow Keys Movement**: Stop the default cursor movement and instead teleport the user to the next logical tile.
 - **Last-Second Painting**: Catch the `WM_PAINT` message, let the textbox draw itself, then immediately stamp the clue number in the corner before the screen refreshes.
 
 ### The Placement Logic
